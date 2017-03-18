@@ -8,8 +8,6 @@ set autoread
 let mapleader=","
 let g:mapleader=","
 
-nmap <leader>w :w!<cr>
-
 command W w !sudo tee % > /dev/null
 
 set so=7
@@ -35,24 +33,13 @@ set nowb
 set noswapfile
 
 set expandtab
-
 set smarttab
-
 set shiftwidth=4
 set tabstop=4
-autocmd filetype javascript,less set ts=2
-autocmd filetype javascript,less set sw=2
 
 set ai
 set si
 set wrap
-
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-map <leader>cb :Bclose<cr>:tabclose<cr>gT
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -60,7 +47,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 "set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
-map 0 ^
 
 "nmap <M-j> mz:m+<cr>`z
 "nmap <M-k> mz:m-2<cr>`z
@@ -74,21 +60,11 @@ endfunc
 
 func! DeleteTrailingWS()
     exe "normal mz"
-    %s\s+$//ge
+    %s\s+$
     exe "normal `z"
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
-
-noremap <leader>m mmHmt:%s<C-V><cr>//ge<cr>'tzt'm
-
-map <leader>nb :e ~/buffer<cr>
-map <leader>x :e ~/buffer.md<cr>
-map <leader>q :q!<cr>
-map <leader>b ^
-map <leader>e $
-
-map <leader>pp :setlocal paste!<cr>
 
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
@@ -113,6 +89,59 @@ endfunction
 set foldenable
 "set foldmethod=syntax
 "nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<cr>
-nnoremap <space> <c-f>
 
 set wildignore+=*/node_modules/*,*.so,*.swp,*.zip
+
+"filetype indent
+"
+autocmd filetype javascript,less,css,html set ts=2 sw=2
+
+"key mapping
+"
+nmap <leader>w :w!<cr>
+noremap <leader>m mmHmt:%s<C-V><cr><cr>'tzt'm
+map <silent> <leader><cr> :noh<cr>
+
+map <leader>nb :e ~/buffer<cr>
+map <leader>x :e ~/buffer.md<cr>
+map <leader>q :q<cr>
+
+map 0 ^
+map <leader>b ^
+map <leader>e $
+
+map <leader>pp :setlocal paste!<cr>
+nnoremap <space> <c-f>
+
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+map <leader>cb :Bclose<cr>:tabclose<cr>gT
+inoremap <leader><cr> <cr><c-o>==<c-o>O
+
+function! Expander()
+  let line   = getline(".")
+  let col    = col(".")
+  let first  = line[col-2]
+  let second = line[col-1]
+  let third  = line[col]
+
+  if first ==# ">"
+    if second ==# "<" && third ==# "/"
+      return "\<CR>\<C-o>==\<C-o>O"
+
+    else
+      return "\<CR>"
+
+    endif
+
+  else
+    return "\<CR>"
+
+  endif
+
+endfunction
+
+inoremap <expr> <CR> Expander()
