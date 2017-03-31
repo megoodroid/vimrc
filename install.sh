@@ -18,6 +18,7 @@ PLUGINS=(
 "scrooloose/nerdcommenter"
 "scrooloose/nerdtree"
 "leafgarland/typescript-vim"
+"pangloss/vim-javascript"
 "neoclide/vim-jsx-improve"
 "mattn/emmet-vim"
 )

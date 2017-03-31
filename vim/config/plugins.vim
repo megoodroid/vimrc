@@ -7,5 +7,12 @@ map <leader>nn :NERDTreeToggle<cr>
 noremap <leader>f :CtrlPMRU<cr>
 
 let g:user_emmet_install_global=0
-autocmd filetype html,css EmmetInstall
+
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\}
+
+autocmd filetype html,css,javascript EmmetInstall
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")

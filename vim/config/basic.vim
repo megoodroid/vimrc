@@ -94,7 +94,7 @@ set wildignore+=*/node_modules/*,*.so,*.swp,*.zip
 
 "filetype indent
 "
-autocmd filetype javascript,less,css,html set ts=2 sw=2
+autocmd filetype javascript,less,css,html,xml,json set ts=2 sw=2
 
 "key mapping
 "
@@ -120,6 +120,10 @@ map <C-l> <C-W>l
 
 map <leader>cb :Bclose<cr>:tabclose<cr>gT
 inoremap <leader><cr> <cr><c-o>==<c-o>O
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+"tab
+map <leader>t :bn<cr>
 
 function! Expander()
   let line   = getline(".")
