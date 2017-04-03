@@ -43,7 +43,7 @@ set wrap
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-"set laststatus=2
+set laststatus=2
 
 "set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
@@ -94,7 +94,7 @@ set wildignore+=*/node_modules/*,*.so,*.swp,*.zip
 
 "filetype indent
 "
-autocmd filetype javascript,less,css,html,xml,json set ts=2 sw=2
+autocmd filetype javascript,javascript.jsx,less,css,html,xml,json set ts=2 sw=2
 
 "key mapping
 "
@@ -113,10 +113,10 @@ map <leader>e $
 map <leader>pp :setlocal paste!<cr>
 nnoremap <space> <c-f>
 
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+"noremap <C-j> <C-W>j
+"noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
 
 map <leader>cb :Bclose<cr>:tabclose<cr>gT
 inoremap <leader><cr> <cr><c-o>==<c-o>O
@@ -124,6 +124,13 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 "tab
 map <leader>t :bn<cr>
+
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 
 function! Expander()
   let line   = getline(".")
