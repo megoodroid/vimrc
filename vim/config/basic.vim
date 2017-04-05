@@ -104,7 +104,7 @@ map <silent> <leader><cr> :noh<cr>
 
 map <leader>nb :e ~/buffer<cr>
 map <leader>x :e ~/buffer.md<cr>
-map <leader>q :q<cr>
+nnoremap <leader>q :q<cr>
 
 map 0 ^
 map <leader>b ^
@@ -119,7 +119,6 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 map <leader>cb :Bclose<cr>:tabclose<cr>gT
-inoremap <leader><cr> <cr><c-o>==<c-o>O
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 "tab
@@ -149,3 +148,10 @@ function! Expander()
 endfunction
 
 inoremap <expr> <CR> Expander()
+
+"undo
+try
+    set undodir=~/.vim/temp_dirs/undodir
+    set undofile
+catch
+endtry
