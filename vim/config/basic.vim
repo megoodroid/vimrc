@@ -1,7 +1,9 @@
+call pathogen#infect()
+
 set history=500
 
-filetype plugin on
-filetype indent on
+syntax on
+filetype plugin indent on
 
 set autoread
 
@@ -40,6 +42,7 @@ set tabstop=4
 set ai
 set si
 set wrap
+set nu
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -52,38 +55,38 @@ set laststatus=2
 "nmap <M-k> mz:m-2<cr>`z
 
 func! HasPaste()
-    if &paste
-        return 'PASTE MODE '
-    endif
-    return ''
+if &paste
+    return 'PASTE MODE '
+endif
+return ''
 endfunc
 
 func! DeleteTrailingWS()
-    exe "normal mz"
-    %s\s+$
-    exe "normal `z"
+exe "normal mz"
+%s\s+$
+exe "normal `z"
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
-    let l:currentBufNum = bufnr("%")
-    let l:alternateBufNum = bufnr("#")
+let l:currentBufNum = bufnr("%")
+let l:alternateBufNum = bufnr("#")
 
-    if buflisted(l:alternateBufNum)
-        buffer #
-    else
-        bnext
-    endif
+if buflisted(l:alternateBufNum)
+    buffer #
+else
+    bnext
+endif
 
-    if bufnr("%") == l:currentBufNum
-        new
-    endif
+if bufnr("%") == l:currentBufNum
+    new
+endif
 
-    if buflisted(l:currentBufNum)
-        execute("bdelete! ".l:currentBufNum)
-    endif
+if buflisted(l:currentBufNum)
+    execute("bdelete! ".l:currentBufNum)
+endif
 endfunction
 
 set foldenable
