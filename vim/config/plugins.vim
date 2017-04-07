@@ -18,7 +18,7 @@ imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 let g:jsx_ext_required = 0
 "let g:jsx_pragma_required = 1
 
-autocmd filetype javascript.jsx colorscheme desert 
+"autocmd filetype javascript.jsx colorscheme desert 
 autocmd filetype javascript.jsx set si
 
 
