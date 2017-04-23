@@ -97,7 +97,7 @@ set wildignore+=*/node_modules/*,*.so,*.swp,*.zip
 
 "filetype indent
 "
-autocmd filetype javascript,javascript.jsx,less,css,html,xml,json set ts=2 sw=2
+autocmd FileType javascript,javascript.jsx,less,css,html,xml,json set ts=2 sw=2
 
 "key mapping
 "
