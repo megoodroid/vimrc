@@ -61,13 +61,18 @@ endif
 return ''
 endfunc
 
-func! DeleteTrailingWS()
-exe "normal mz"
-%s\s+$
-exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
+" Delete trailing white space on save, useful for some filetypes ;)
+fun! CleanExtraSpaces()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    silent! %s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfun
+
+if has("autocmd")
+    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+endif
 
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
@@ -114,10 +119,11 @@ map <leader>b ^
 map <leader>e $
 
 map <leader>pp :setlocal paste!<cr>
-nnoremap <space> <c-f>
+"nnoremap <space> <c-f>
+nnoremap <space> za
 
-"noremap <C-j> <C-W>j
-"noremap <C-k> <C-W>k
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
 noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
@@ -127,12 +133,12 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 "tab
 map <leader>t :bn<cr>
 
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
-inoremap <C-j> <Esc>:m .+1<CR>==gi
-inoremap <C-k> <Esc>:m .-2<CR>==gi
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
 function! Expander()
   let line   = getline(".")
