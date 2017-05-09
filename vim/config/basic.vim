@@ -98,7 +98,7 @@ set foldenable
 "set foldmethod=syntax
 "nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<cr>
 
-set wildignore+=*/node_modules/*,*.so,*.swp,*.zip
+set wildignore+=*/node_modules/*,*.so,*.swp,*.zip,*.pyc
 
 "filetype indent
 "

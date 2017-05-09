@@ -1,5 +1,6 @@
 let g:NERDTreeWinPos="right"
 
+let NERDTreeIgnore=["\.pyc$"]
 map <leader>nn :NERDTreeToggle<cr>
 
 noremap <leader>f :CtrlPMRU<cr>
