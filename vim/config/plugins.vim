@@ -25,11 +25,12 @@ autocmd FileType javascript.jsx set si
 
 nmap <F4> :TagbarToggle<CR>
 let g:tagbar_width = 40 "设置宽度，默认为40  
-autocmd VimEnter,BufRead * nested :call tagbar#autoopen(1) "打开vim时自动打开  
+autocmd VimEnter,BufRead *.py nested :call tagbar#autoopen(1) "打开vim时自动打开  
 
 let g:SimpylFold_docstring_preview = 1
 
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_key_list_select_completion = ['<Enter>', '<Down>']
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
