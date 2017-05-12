@@ -13,12 +13,11 @@ let g:user_emmet_settings = {
 \  },
 \}
 
-autocmd FileType html,css,javascript.jsx EmmetInstall
+autocmd FileType html,htmldjango,css,javascript.jsx,javascript EmmetInstall
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 let g:jsx_ext_required = 0
-"let g:jsx_pragma_required = 1
-
+let g:jsx_pragma_required = 1
 "autocmd FileType javascript.jsx colorscheme desert 
 autocmd FileType javascript.jsx set si
 
