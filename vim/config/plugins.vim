@@ -13,7 +13,7 @@ let g:user_emmet_settings = {
 \  },
 \}
 
-autocmd FileType html,htmldjango,css,javascript.jsx,javascript EmmetInstall
+autocmd FileType html,htmldjango,css,javascript.jsx EmmetInstall
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 let g:jsx_ext_required = 0
