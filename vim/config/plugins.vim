@@ -13,7 +13,7 @@ let g:user_emmet_settings = {
 \  },
 \}
 
-autocmd FileType html,htmldjango,css,javascript.jsx EmmetInstall
+autocmd FileType html,htmldjango,css,javascript.jsx,php EmmetInstall
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 let g:jsx_ext_required = 0
@@ -24,12 +24,19 @@ autocmd FileType javascript.jsx set si
 
 nmap <F4> :TagbarToggle<CR>
 let g:tagbar_width = 40 "设置宽度，默认为40  
-autocmd VimEnter,BufRead *.py nested :call tagbar#autoopen(1) "打开vim时自动打开  
+"autocmd VimEnter,BufRead *.py nested :call tagbar#autoopen(1) "打开vim时自动打开  
 
 let g:SimpylFold_docstring_preview = 1
+let g:SimpylFold_fold_import = 0
+set foldmethod=indent
+set foldlevel=99
 
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:ycm_key_list_select_completion = ['<Enter>', '<Down>']
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+let python_highlight_all=1
+
+let g:syntastic_python_checkers = ['flake8']

@@ -43,3 +43,6 @@
 [submodule "vim/bundle/markdown-preview.vim"]
 	path = vim/bundle/markdown-preview.vim
 	url = https://github.com/iamcco/markdown-preview.vim.git
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = https://github.com/vim-syntastic/syntastic.git

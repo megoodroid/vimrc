@@ -96,13 +96,13 @@ endfunction
 
 set foldenable
 "set foldmethod=syntax
-"nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<cr>
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<cr>
 
 set wildignore+=*/node_modules/*,*.so,*.swp,*.zip,*.pyc
 
 "filetype indent
 "
-autocmd FileType javascript,javascript.jsx,less,css,html,xml,json set ts=2 sw=2
+autocmd FileType javascript,javascript.jsx,less,css,html,xml,json set ts=2 sw=2 softtabstop=2
 
 "key mapping
 "
@@ -119,8 +119,6 @@ map <leader>b ^
 map <leader>e $
 
 map <leader>pp :setlocal paste!<cr>
-"nnoremap <space> <c-f>
-nnoremap <space> za
 
 noremap <C-j> <C-W>j
 noremap <C-k> <C-W>k
