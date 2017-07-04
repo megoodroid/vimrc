@@ -27,6 +27,7 @@ set mat=2
 syntax enable
 
 set encoding=utf8
+set fileencodings=utf-8,gb2312,gbk,iso-8859-1
 
 set ffs=unix,dos,mac
 
