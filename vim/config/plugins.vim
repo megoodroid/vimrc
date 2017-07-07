@@ -29,7 +29,7 @@ let g:tagbar_width = 40 "设置宽度，默认为40
 let g:SimpylFold_docstring_preview = 1
 let g:SimpylFold_fold_import = 0
 set foldmethod=indent
-set foldlevel=99
+set foldlevel=5
 
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
@@ -40,3 +40,5 @@ map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let python_highlight_all=1
 
 let g:syntastic_python_checkers = ['flake8']
+" detect lua nse filetype
+au BufRead,BufNewFile *.nse              set filetype=lua
