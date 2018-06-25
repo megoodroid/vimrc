@@ -4,6 +4,7 @@ let NERDTreeIgnore=["\.pyc$"]
 map <leader>nn :NERDTreeToggle<cr>
 
 noremap <leader>f :CtrlPMRU<cr>
+noremap <leader>b :CtrlPBuffer<cr>
 let g:user_emmet_install_global=0
 
 

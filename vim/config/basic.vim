@@ -116,7 +116,6 @@ map <leader>x :e ~/buffer.md<cr>
 nnoremap <leader>q :q<cr>
 
 map 0 ^
-map <leader>b ^
 map <leader>e $
 
 map <leader>pp :setlocal paste!<cr>
@@ -126,11 +125,13 @@ noremap <C-k> <C-W>k
 noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
-map <leader>cb :Bclose<cr>:tabclose<cr>gT
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
+"buffer
+map <leader>bc :Bclose<cr>:tabclose<cr>gT
+
 "tab
-map <leader>t :bn<cr>
+map <leader>t :tabn<cr>
 
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
