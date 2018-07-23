@@ -14,7 +14,7 @@ command W w !sudo tee % > /dev/null
 
 set so=7
 
-set cmdheight=2
+"set cmdheight=2
 
 set ignorecase
 set smartcase
@@ -35,10 +35,13 @@ set nobackup
 set nowb
 set noswapfile
 
-set expandtab
-set smarttab
+set autoindent
+set smartindent
 set shiftwidth=4
 set tabstop=4
+set softtabstop=4
+set expandtab
+set smarttab
 
 set ai
 set si
@@ -47,7 +50,7 @@ set nu
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-set laststatus=2
+"set laststatus=2
 
 "set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
